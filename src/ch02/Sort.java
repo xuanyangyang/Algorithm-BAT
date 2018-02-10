@@ -262,10 +262,52 @@ public class Sort {
         return A;
     }
 
+    /**
+     * 基数排序
+     * O(n)
+     */
+    public int[] radixSort(int[] A, int n) {
+        int max = A[0];
+
+        for (int a : A) {
+            max = Math.max(max, a);
+        }
+
+        List<List<Integer>> boxs = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            boxs.add(new ArrayList<>());
+        }
+
+        int k = 1;
+        int index;
+
+        while (max > 0) {
+
+            for (int a : A) {
+                boxs.get(a / k % 10).add(a);
+            }
+
+            index = 0;
+
+            for (int i = 0; i < 10; i++) {
+                List<Integer> box = boxs.get(i);
+                for (int j = 0; j < box.size(); j++) {
+                    A[index++] = box.get(j);
+                }
+                box.clear();
+            }
+
+            k *= 10;
+            max /= 10;
+        }
+
+        return A;
+    }
+
     public static void main(String[] args) {
         Sort sort = new Sort();
-        int len = 10;
-        int range = 10;
+        int len = 50;
+        int range = 100;
         int testTimes = 50000;
         boolean isSuccess = true;
         for (int i = 0; i < testTimes; i++) {
@@ -277,7 +319,8 @@ public class Sort {
 //            sort.quickSort(arr, arr.length);
 //            sort.heapSort(arr, arr.length);
 //            sort.shellSort(arr, arr.length);
-            sort.countingSort(arr, arr.length);
+//            sort.countingSort(arr, arr.length);
+            sort.radixSort(arr,arr.length);
             if (!isSorted(arr)) {
                 System.out.println("Wrong Case:");
                 printArray(arr);
