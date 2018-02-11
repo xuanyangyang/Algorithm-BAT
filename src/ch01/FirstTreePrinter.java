@@ -1,5 +1,8 @@
 package ch01;
 
+import MyTree.Tree;
+import MyTree.TreeNode;
+
 import java.util.Stack;
 
 /**
@@ -7,22 +10,29 @@ import java.util.Stack;
  */
 
 public class FirstTreePrinter {
-    public void printTree(TreeNode root) {
+    // 非递归
+    public void printTreeWithStack(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
+        stack.add(root);
+        TreeNode node;
 
-        TreeNode node = root;
-
-        while (null != node || !stack.empty()) {
-
-            while (null != node){
-                System.out.print(node.val + " ");
-                stack.add(node);
-                node = node.left;
-            }
-
+        while (!stack.empty()) {
             node = stack.pop();
-            node = node.right;
+            System.out.print(node.val + " ");
+            if (node.right != null)
+                stack.add(node.right);
+            if (node.left != null)
+                stack.add(node.left);
         }
+    }
+
+    // 递归
+    public void printTreeWithRecursive(TreeNode node) {
+        if (node == null)
+            return;
+        System.out.print(node.val + " ");
+        printTreeWithRecursive(node.left);
+        printTreeWithRecursive(node.right);
     }
 
     public static void main(String[] args) {
@@ -30,6 +40,8 @@ public class FirstTreePrinter {
         Tree tree = new Tree();
 
         FirstTreePrinter firstTreePrinter = new FirstTreePrinter();
-        firstTreePrinter.printTree(tree.getRoot());
+        firstTreePrinter.printTreeWithStack(tree.getRoot());
+        System.out.println();
+        firstTreePrinter.printTreeWithRecursive(tree.getRoot());
     }
 }
