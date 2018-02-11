@@ -210,7 +210,7 @@ public class Sort {
      * O(nlogn)
      */
     public int[] shellSort(int[] A, int n) {
-        int feet = A.length;
+        int feet = A.length / 2;
         int temp;
         int index;
         while (feet > 0) {
@@ -318,9 +318,9 @@ public class Sort {
 //            sort.mergeSort(arr, arr.length);
 //            sort.quickSort(arr, arr.length);
 //            sort.heapSort(arr, arr.length);
-//            sort.shellSort(arr, arr.length);
+            sort.shellSort(arr, arr.length);
 //            sort.countingSort(arr, arr.length);
-            sort.radixSort(arr,arr.length);
+//            sort.radixSort(arr,arr.length);
             if (!isSorted(arr)) {
                 System.out.println("Wrong Case:");
                 printArray(arr);
