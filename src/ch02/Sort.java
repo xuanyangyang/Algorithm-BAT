@@ -132,40 +132,33 @@ public class Sort {
         if (A == null || A.length < 2)
             return null;
 
-        partition(A, 0, n - 1);
+        quickSort(A, 0, n - 1);
 
         return A;
     }
 
-    public int quickSort(int[] arr, int low, int high) {
-        int key = arr[low];
-        while (low < high) {
-            while (arr[high] >= key && low < high) {
-                high--;
-            }
-            if (low < high) {
-                arr[low] = arr[high];
-                low++;
-            }
-            while (arr[low] <= key && low < high) {
-                low++;
-            }
-            if (low < high) {
-                arr[high] = arr[low];
-                high--;
-            }
+    public void quickSort(int[] arr, int left, int right) {
+        if (left < right) {
+            int mid = partition(arr, left, right);
+            quickSort(arr, left, mid - 1);
+            quickSort(arr, mid + 1, right);
         }
-        arr[low] = key;
-        return low;
     }
 
-    public void partition(int[] arr, int low, int high) {
-        if (low >= high)
-            return;
-        int index = quickSort(arr, low, high);
-        partition(arr, low, index);
-        partition(arr, index + 1, high);
+    public int partition(int[] arr, int left, int right) {
+        int random = left + (int) (Math.random() * (right - left + 1));
+        swap(arr, random, right);
+        int leftIndex = left - 1;
+        int index = left;
+        while (index <= right) {
+            if (arr[index] <= arr[right]) {
+                swap(arr, ++leftIndex, index);
+            }
+            index++;
+        }
+        return leftIndex;
     }
+
 
     /**
      * 堆排序
@@ -316,9 +309,9 @@ public class Sort {
 //            sort.insertionSort(arr, arr.length);
 //            sort.selectionSort(arr, arr.length);
 //            sort.mergeSort(arr, arr.length);
-//            sort.quickSort(arr, arr.length);
+            sort.quickSort(arr, arr.length);
 //            sort.heapSort(arr, arr.length);
-            sort.shellSort(arr, arr.length);
+//            sort.shellSort(arr, arr.length);
 //            sort.countingSort(arr, arr.length);
 //            sort.radixSort(arr,arr.length);
             if (!isSorted(arr)) {
@@ -363,5 +356,11 @@ public class Sort {
             }
         }
         return true;
+    }
+
+    public void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
     }
 }
