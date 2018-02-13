@@ -8,24 +8,34 @@ package ch03;
 public class Reverse {
     public String reverseSentence(String A, int n) {
         // write code here
-        StringBuilder result = new StringBuilder(reverseSingle(A.toCharArray()));
-        String[] results = result.toString().split(" ");
-        result = new StringBuilder();
-        for (int i = 0; i < results.length; i++){
-            result.append(reverseSingle(results[i].toCharArray()));
-            if(i!= results.length-1)
-                result.append(" ");
+        char[] chars = A.toCharArray();
+
+        reverse(chars, 0, chars.length - 1);
+        int l = -1;
+        int r = -1;
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] != ' ') {
+                if (i == 0 || chars[i - 1] == ' ')
+                    l = i;
+                if (i == chars.length - 1 || chars[i + 1] == ' ')
+                    r = i;
+            }
+            if (l != -1 && r != -1) {
+                reverse(chars, l, r);
+                l = -1;
+                r = -1;
+            }
         }
 
-        return result.toString();
+        return String.valueOf(chars);
     }
 
-    public String reverseSingle(char[] chars) {
-        int mid = chars.length / 2;
-        for (int i = 0; i < mid; i++) {
-            swap(chars, i, chars.length - i - 1);
+    public void reverse(char[] chars, int start, int end) {
+        while (start < end) {
+            swap(chars, start, end);
+            start++;
+            end--;
         }
-        return String.valueOf(chars);
     }
 
     public void swap(char[] chars, int i, int j) {
