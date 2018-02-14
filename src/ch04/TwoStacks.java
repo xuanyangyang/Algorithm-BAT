@@ -31,11 +31,10 @@ public class TwoStacks {
                 else {
                     int popNumber = 0;
                     while (!help.empty()) {
-                        if (value > help.peek()){
+                        if (value > help.peek()) {
                             data.push(help.pop());
                             popNumber++;
-                        }
-                        else
+                        } else
                             break;
                     }
                     help.push(value);
@@ -48,14 +47,15 @@ public class TwoStacks {
 
         }
 
-        int size = numbers.length - 1;
         while (!help.empty()) {
-            numbers[size--] = help.pop();
+            data.push(help.pop());
         }
 
         ArrayList<Integer> list = new ArrayList<>();
-        for (int num : numbers)
-            list.add(num);
+        while (!data.empty()) {
+            list.add(data.pop());
+
+        }
 
         return list;
     }
