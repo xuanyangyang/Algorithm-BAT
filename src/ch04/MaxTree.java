@@ -16,6 +16,7 @@ public class MaxTree {
         Stack<Integer> stack = new Stack<>();
         int[] res = new int[n];
 
+        // 找到左边第一个比当前数大的下标
         for (int i = 0; i < n; i++) {
             while (!stack.empty() && arr[stack.peek()] < arr[i])
                 stack.pop();
@@ -28,6 +29,7 @@ public class MaxTree {
 
         stack.clear();
 
+        // 找到右边第一个比当前数大的下标，并和左边第一个比当前数大的数比较，取较小的
         for (int i = n - 1; i >= 0; i--) {
             while (!stack.empty() && arr[stack.peek()] < arr[i])
                 stack.pop();
