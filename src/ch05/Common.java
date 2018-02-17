@@ -42,25 +42,12 @@ public class Common {
         return result;
     }
 
-    public ListNode makeList(int[] arr) {
-        ListNode head = new ListNode(arr[0]);
-        ListNode pre = head;
-        ListNode node;
-        for (int i = 1; i < arr.length; i++) {
-            node = new ListNode(arr[i]);
-            pre.next = node;
-            pre = node;
-        }
-
-        return head;
-    }
-
     public static void main(String[] args) {
         Common common = new Common();
         int[] arrA = {0, 3, 9, 11, 15, 21, 27, 28, 31};
         int[] arrB = {0, 1, 3, 5, 11, 16, 17, 20, 25};
-        ListNode headA = common.makeList(arrA);
-        ListNode headB = common.makeList(arrB);
+        ListNode headA = ListNode.makeList(arrA);
+        ListNode headB = ListNode.makeList(arrB);
 
         int[] result = common.findCommonParts(headA, headB);
 

@@ -48,23 +48,10 @@ public class KInverse {
         start.next = right;
     }
 
-    public ListNode makeList(int[] arr) {
-        ListNode head = new ListNode(arr[0]);
-        ListNode pre = head;
-        ListNode node;
-        for (int i = 1; i < arr.length; i++) {
-            node = new ListNode(arr[i]);
-            pre.next = node;
-            pre = node;
-        }
-
-        return head;
-    }
-
     public static void main(String[] args) {
         KInverse kInverse = new KInverse();
         int[] data = {0, 1, 2, 5, 11};
-        ListNode head = kInverse.makeList(data);
+        ListNode head = ListNode.makeList(data);
         head = kInverse.inverse(head, 2);
         ListNode node = head;
         while (node != null) {
