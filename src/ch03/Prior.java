@@ -17,11 +17,12 @@ public class Prior {
             return strs[0];
 
         Arrays.sort(strs, (a, b) -> (a + b).compareTo(b + a));
-        String result = "";
-        for (int i = 0; i < strs.length; i++)
-            result += strs[i];
+        StringBuilder result = new StringBuilder();
 
-        return result;
+        for (String str : strs)
+            result.append(str);
+
+        return result.toString();
     }
 
 }
