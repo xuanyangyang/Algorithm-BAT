@@ -8,18 +8,17 @@ package ch02;
 public class ThreeColor {
     public int[] sortThreeColor(int[] arr, int n) {
         // write code here
+        int left = -1;
         int right = n;
-        int left = 0;
-        int i = 0;
-        while (i != right) {
-            if (arr[i] == 0) {
-                swap(arr, left++, i);
-            } else if (arr[i] == 2) {
-                swap(arr, --right, i--);
-            }
-            i++;
+        int index = 0;
+        while (index < right) {
+            if (arr[index] == 0)
+                swap(arr, ++left, index++);  // 由于前面的数已经遍历过，所以交换后可以后移即(index++)
+            else if (arr[index] == 2)
+                swap(arr, --right, index);  // 右边的数没有遍历过，所以交换后index不增
+            else
+                index++;
         }
-
         return arr;
     }
 
