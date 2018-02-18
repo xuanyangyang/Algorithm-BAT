@@ -16,6 +16,7 @@ public class Gap {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
 
+        // 获取数组中最大最小值用来划分桶区间
         for (int num : nums) {
             min = Math.min(min, num);
             max = Math.max(max, num);
@@ -29,6 +30,7 @@ public class Gap {
         int[] mins = new int[len + 1];
         int bid;
 
+        // 将数放入桶中
         for (int num : nums) {
             bid = bucket(num, len, min, max);
             mins[bid] = hasNums[bid] ? Math.min(mins[bid], num) : num;
@@ -39,6 +41,7 @@ public class Gap {
         int lastMax = 0;
         int index = 0;
 
+        // 寻找第一个不为空的桶
         while (index <= len) {
             if (hasNums[index]) {
                 lastMax = maxs[index];
@@ -50,6 +53,7 @@ public class Gap {
         int result = 0;
         while (index <= len) {
             if (hasNums[index]) {
+                // 当桶的最小值减去上一个不为空的桶最大值即为2个桶的最大差值
                 result = Math.max(result, mins[index] - lastMax);
                 lastMax = maxs[index];
             }
@@ -60,6 +64,7 @@ public class Gap {
     }
 
     // 使用long类型是为了防止相乘时溢出
+    // 根据区间获取桶号
     public int bucket(long num, long len, long min, long max) {
         return (int) ((num - min) * len / (max - min));
     }
