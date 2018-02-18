@@ -14,11 +14,11 @@ public class Finder {
         while (row < n && col >= 0) {
             if (mat[row][col] == x)
                 return true;
-            // 比它大往下走
+            // 比它大往左走
             else if (x <= mat[row][col]) {
                 col--;
             }
-            // 比它小往左走
+            // 比它小往下走
             else if (x >= mat[row][col]) {
                 row++;
             }
