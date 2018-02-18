@@ -13,11 +13,10 @@ import java.util.Stack;
  * 返回：[5,4,3,2,1]
  */
 public class TwoStacks {
-    Stack<Integer> data = new Stack<>();
-    Stack<Integer> help = new Stack<>();
-
     public ArrayList<Integer> twoStacksSort(int[] numbers) {
         // write code here
+        Stack<Integer> data = new Stack<>();
+        Stack<Integer> help = new Stack<>();
         for (int i = numbers.length - 1; i >= 0; i--)
             data.push(numbers[i]);
 
@@ -26,7 +25,7 @@ public class TwoStacks {
             if (help.empty())
                 help.push(value);
             else {
-                if (value < help.peek())
+                if (value <= help.peek())
                     help.push(value);
                 else {
                     int popNumber = 0;
