@@ -79,6 +79,7 @@ public class IdenticalTree {
         System.out.println(result);
     }
 
+    // 递归先序遍历
     public String serialByPre(TreeNode head) {
         if (head == null) {
             return "#!";
