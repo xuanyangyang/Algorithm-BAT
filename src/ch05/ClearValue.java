@@ -9,29 +9,22 @@ package ch05;
  * {1,3,4,3,1}
  */
 public class ClearValue {
-    public ListNode clear(ListNode head, int val) {
-        // write code here
-        if (head == null)
-            return null;
-
-        ListNode node = head;
-        head = null;
-        ListNode tail = null;
-
-        while (node != null) {
-            if (node.val != val) {
-                if (tail == null)
-                    head = node;
-                else
-                    tail.next = node;
-                tail = node;
-            }
-            node = node.next;
+    public ListNode clear(ListNode head, int num) {
+        // 删除头节点直到头节点不为num
+        while (head != null) {
+            if (head.val != num)
+                break;
+            head = head.next;
         }
-
-        if (tail != null)
-            tail.next = null;
-
+        ListNode pre = head;
+        ListNode cur = head;
+        while (cur != null) {
+            if (cur.val == num)
+                pre.next = cur.next;
+            else
+                pre = cur;
+            cur = cur.next;
+        }
         return head;
     }
 
