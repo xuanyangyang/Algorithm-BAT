@@ -33,6 +33,13 @@ public class KInverse {
         return head;
     }
 
+    /**
+     * 反转局部链表
+     * @param left 局部链表头节点的前一个节点
+     * @param start 局部链表的头节点
+     * @param end 局部链表的尾节点
+     * @param right 局部链表尾节点的后一个节点
+     */
     public void reverse(ListNode left, ListNode start, ListNode end, ListNode right) {
         ListNode pre = start;
         ListNode cur = pre.next;
