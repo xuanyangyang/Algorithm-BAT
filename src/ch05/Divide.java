@@ -41,14 +41,15 @@ public class Divide {
             node = node.next;
         }
 
+        // 如果没有小于等于阈值，则只有大于阀值的部分，令头节点等于右边起始节点
         if (leftHead == null)
             head = rightHead;
-        else {
+        else {  // 否则就是要连接左右部分
             head = leftHead;
             leftNode.next = rightHead;
         }
 
-        if (rightHead != null)
+        if (rightHead != null)  // 如果有右部分，则把尾节点的next置空
             rightNode.next = null;
 
         return head;
