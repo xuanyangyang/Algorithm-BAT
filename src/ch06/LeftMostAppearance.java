@@ -11,6 +11,9 @@ package ch06;
 public class LeftMostAppearance {
     public int findPos(int[] arr, int n, int num) {
         // write code here
+        if (arr == null || n == 0)
+            return -1;
+
         int left = 0;
         int right = n - 1;
         int mid;
