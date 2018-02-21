@@ -19,10 +19,13 @@ public class Solution {
         int mid;
         while (left < right) {
             mid = left + (right - left) / 2;
+            // 如果mid大于左边的值，从中间往左边看是递减的，则局部最小值就在左边
             if (arr[mid] > arr[mid - 1])
                 right = mid - 1;
+            // 如果mid大于右边的值，从中间往右边看是递减的，则局部最小值就在右边
             else if (arr[mid] > arr[mid + 1])
                 left = mid + 1;
+            // 小于相邻值就是局部最小值
             else
                 return mid;
         }
