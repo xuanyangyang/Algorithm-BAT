@@ -28,7 +28,7 @@ public class FoldPaper {
     }
 
     /**
-     * 模拟后序遍历
+     * 模拟右中左遍历
      * @param level 层数
      * @param high 高度
      * @param down 是否是down
