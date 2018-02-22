@@ -19,7 +19,7 @@ public class CountNodes {
     public int bs(TreeNode node, int level, int high) {
         if (level == high)
             return 1;
-        // 如果右子树的高度等于左子树高度则表示左子树是一棵满二叉树，可用公示计算左子树大小，带头节点，然后遍历右子树重复本操作
+        // 如果右子树的高度等于左子树高度则表示左子树是一棵满二叉树，可用公示计算左子树大小（带头节点），然后遍历右子树重复本操作
         if (mostLeftLevel(node.right, level + 1) == high)
             return (int) (Math.pow(2, high - level) + bs(node.right, level + 1, high));
         else
