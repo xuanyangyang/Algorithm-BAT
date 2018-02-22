@@ -19,7 +19,7 @@ public class CheckCompletion {
         boolean isCheckLeaf = false; // 是否检查是叶子节点
         while (!queue.isEmpty()) {
             node = queue.poll();
-            if (node.left == null) { // 有右子树，必须有左子树
+            if (node.left == null) { // 有右孩子，必须有左孩子
                 if (node.right != null)
                     return false;
             } else {
@@ -28,7 +28,7 @@ public class CheckCompletion {
                 else
                     queue.add(node.left);
             }
-            if (node.right == null) { // 当前节点右子树为空则以后的节点都是叶子节点
+            if (node.right == null) { // 当前节点右孩子为空则以后的节点都是叶子节点
                 isCheckLeaf = true;
             } else {
                 queue.add(node.right);
