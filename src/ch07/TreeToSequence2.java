@@ -74,11 +74,11 @@ public class TreeToSequence2 {
         TreeNode cur;
         while (!s1.isEmpty()) {
             cur = s1.pop();
-            if (cur != null) {
-                s2.add(cur);
+            s2.add(cur);
+            if (cur.left != null)
                 s1.add(cur.left);
+            if (cur.right != null)
                 s1.add(cur.right);
-            }
         }
         while (!s2.isEmpty())
             result.add(s2.pop().val);
