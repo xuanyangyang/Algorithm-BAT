@@ -11,7 +11,7 @@ package ch09;
 public class HighAndShort {
     public int countWays(int n) {
         // write code here
-        return C(2 * n, n) / (n + 1);
+        return C(n, n / 2) / (n / 2 + 1);
     }
 
     /**
