@@ -23,9 +23,9 @@ public class MinValue {
                     break;
                 else if (arr[left] < arr[right]) // 当局部列表有序返回头
                     return arr[left];
-                else if (arr[left] > arr[mid]) // 当局部列表头元素小于中间元素，这里有循环，也就是有最小值，搜索左边
+                else if (arr[left] > arr[mid]) // 当局部列表头元素大于中间元素，这里有循环，也就是有最小值，搜索左边
                     right = mid;
-                else if (arr[mid] > arr[right]) // 当局部列表中间元素小于尾元素，这里有循环，也就是有最小值，搜索右边
+                else if (arr[mid] > arr[right]) // 当局部列表中间元素大于尾元素，这里有循环，也就是有最小值，搜索右边
                     left = mid;
                 else {
                     // 当局部列表头元素等于中间元素等于尾元素，遍历寻找最小值
